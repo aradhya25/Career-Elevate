@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Elevate - Register</title>
+    <style>
+        :root {
+            --primary: #0A2342;
+            --secondary: #8C5E58;
+            --accent: #FF6B6B;
+            --error: #FF3B3B;
+            --highlight: #FFD700;
+            --background: #F8F9FA;
+            --text: #2D3142;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #F1F4F8 0%, #E8EBF0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            /* background: linear-gradient(135deg, var(--primary) 0%, #1A365D 100%); */
+            background: #0033A0;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(10, 35, 66, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--highlight);
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #D4E3F7;
+        }
+
+        .register-container {
+            max-width: 400px;
+            width: 90%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(10, 35, 66, 0.1);
+        }
+
+        .register-form h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.80rem;
+            
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #DFE3EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FCFDFF;
+            color: var(--text);
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 4px rgba(37, 99, 235, 0.5);
+        }
+
+        .error-input {
+            border-color: var(--error) !important;
+        }
+
+        .error-text {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            /* background: #FF5252; */
+            box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .login-link a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .form-group input {
+                padding: 0.7rem;
+            }
+
+            button[type="submit"] {
+                padding: 0.8rem;
+            }
+        }
+        .error-message {
+            color: var(--error);
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        /* Password toggle eye icon styles */
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6B7280;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
+            padding-right: 40px; /* Make room for the eye icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Your Path to Career Excellence Starts Here</h1>
+        <p>Empowering professionals through mentorship and career guidance</p>
+    </div>
+
+    <div class="register-container">
+        <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
+        
+        <form class="register-form" action="/register" method="POST" novalidate>
+            <h2>Register</h2>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your Full Name">
+                <div id="nameError" class="error-text"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter email">
+                <div id="emailError" class="error-text"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Create Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                    <button type="button" class="password-toggle" id="passwordToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                <div id="passwordError" class="error-text"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-container">
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••">
+                    <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                <div id="confirmPasswordError" class="error-text"></div>
+            </div>
+
+            <button type="submit">Register</button>
+
+            <div class="login-link">
+                Existing member? <a href="http://localhost:8080/login">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.register-form');
+            const inputs = {
+                name: document.getElementById('name'),
+                email: document.getElementById('email'),
+                password: document.getElementById('password'),
+                confirmPassword: document.getElementById('confirmPassword')
+            };
+            const errors = {
+                name: document.getElementById('nameError'),
+                email: document.getElementById('emailError'),
+                password: document.getElementById('passwordError'),
+                confirmPassword: document.getElementById('confirmPasswordError')
+            };
+
+            // Password toggle functionality
+            const passwordToggle = document.getElementById('passwordToggle');
+            const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+
+            // Toggle password visibility function
+            function togglePasswordVisibility(passwordInput, toggleButton) {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle the eye icon
+                const eyeIcon = toggleButton.querySelector('.eye-icon');
+                if (type === 'text') {
+                    eyeIcon.innerHTML = `
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                    `;
+                } else {
+                    eyeIcon.innerHTML = `
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    `;
+                }
+            }
+
+            // Add event listeners for password toggles
+            passwordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(inputs.password, passwordToggle);
+            });
+
+            confirmPasswordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(inputs.confirmPassword, confirmPasswordToggle);
+            });
+
+            // Function to show error for a specific field
+            function showError(field, message) {
+                inputs[field].classList.add('error-input');
+                errors[field].textContent = message;
+                errors[field].style.display = 'block';
+                return false;
+            }
+
+            // Function to clear error for a specific field
+            function clearError(field) {
+                inputs[field].classList.remove('error-input');
+                errors[field].style.display = 'none';
+            }
+
+            // Clear errors when input changes
+            Object.keys(inputs).forEach(field => {
+                inputs[field].addEventListener('input', function() {
+                    clearError(field);
+                });
+            });
+
+            // Validate email format
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                
+                // Clear all previous errors
+                Object.keys(errors).forEach(field => {
+                    clearError(field);
+                });
+                
+                // Validate name (required)
+                if (!inputs.name.value.trim()) {
+                    isValid = showError('name', 'Full name is required');
+                }
+                
+                // Validate email (required and format)
+                if (!inputs.email.value.trim()) {
+                    isValid = showError('email', 'Email is required');
+                } else if (!isValidEmail(inputs.email.value)) {
+                    isValid = showError('email', 'Please enter a valid email address');
+                }
+                
+                // Validate password (required and length)
+                if (!inputs.password.value) {
+                    isValid = showError('password', 'Password is required');
+                } else if (inputs.password.value.length < 8) {
+                    isValid = showError('password', 'Password must be at least 8 characters');
+                }
+                
+                // Validate confirm password (match)
+                if (!inputs.confirmPassword.value) {
+                    isValid = showError('confirmPassword', 'Please confirm your password');
+                } else if (inputs.password.value !== inputs.confirmPassword.value) {
+                    isValid = showError('confirmPassword', 'Passwords do not match');
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                }
+                
+                return isValid;
+            });
+        });
+    </script>
+</body>
+</html>

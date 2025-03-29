@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Career Mentoring</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --text-primary: #1f2937;
+      --text-secondary: #64748b;
+      --bg-light: #f8fafc;
+      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+      color: var(--text-primary);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 6rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.95;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+    }
+
+    .section {
+      margin-bottom: 6rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .service-card {
+      background-color: var(--bg-light);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .service-text {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .steps {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      background-color: var(--bg-light);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateX(8px);
+    }
+
+    .step-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      min-width: 3rem;
+      line-height: 1;
+    }
+
+    .step h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .testimonials {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .testimonial {
+      background-color: var(--bg-light);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial:hover {
+      transform: scale(1.02);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .testimonial-author::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .mentors-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .mentors-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .mentor-card {
+      text-align: center;
+      padding: 2.5rem;
+      background-color: var(--bg-light);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .mentor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mentor-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease;
+    }
+
+    .mentor-card:hover .mentor-image {
+      transform: scale(1.05);
+    }
+
+    .mentor-card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mentor-card p {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem;
+      background-color: var(--bg-light);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(30, 64, 175, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px -1px rgba(30, 64, 175, 0.4);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 3rem;
+      margin-top: 6rem;
+    }
+
+    footer p {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .step {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .step-number {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>IT Career Mentoring</h1>
+    <p>Personalized guidance to help you achieve your career goals in the tech industry</p>
+  </header>
+
+  <main>
+    <section class="container section">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 class="service-title">Career Path Guidance</h3>
+          <p class="service-text">Get expert advice on choosing the right IT career path based on your interests, skills, and market demand.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Resume & LinkedIn Review</h3>
+          <p class="service-text">Optimize your professional profiles to stand out to recruiters and hiring managers.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Interview Preparation</h3>
+          <p class="service-text">Practice with mock interviews and get feedback on technical and behavioral questions.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Skill Development</h3>
+          <p class="service-text">Get personalized recommendations for courses, certifications, and learning resources.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Job Search Strategy</h3>
+          <p class="service-text">Learn effective techniques for finding and applying to IT positions that match your goals.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Networking Tips</h3>
+          <p class="service-text">Build your professional network and leverage it for career opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Book a Free Consultation</h3>
+            <p>Schedule your initial 30-minute consultation to discuss your career goals and challenges.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Personalized Plan</h3>
+            <p>Receive a customized mentoring plan tailored to your specific needs and objectives.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>Regular Sessions</h3>
+            <p>Meet with your mentor through one-on-one video calls, group sessions, or workshop participation.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>Track Progress</h3>
+            <p>Regular check-ins to measure progress and adjust your development plan as needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">Success Stories</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p class="testimonial-text">"The mentoring program helped me transition from a junior developer to a senior role in just 18 months. The guidance was invaluable!"</p>
+          <p class="testimonial-author">Sarah Chen, Senior Software Engineer</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"My mentor's interview preparation tips were crucial in landing my dream job at a top tech company."</p>
+          <p class="testimonial-author">Michael Rodriguez, Cloud Architect</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">Meet Our Mentors</h2>
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300" alt="Mentor" class="mentor-image">
+          <h3>Emma Thompson</h3>
+          <p>Senior Software Engineer</p>
+          <p>10+ years in Full-Stack Development</p>
+        </div>
+        <div class="mentor-card">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" alt="Mentor" class="mentor-image">
+          <h3>David Park</h3>
+          <p>Tech Lead</p>
+          <p>12+ years in Cloud Architecture</p>
+        </div>
+        <div class="mentor-card">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=300" alt="Mentor" class="mentor-image">
+          <h3>Lisa Martinez</h3>
+          <p>Product Manager</p>
+          <p>8+ years in Agile Development</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">Start Your Journey</h2>
+      <div class="pricing">
+        <p style="margin-bottom: 2rem; font-size: 1.2rem;">Book your free 30-minute consultation and take the first step towards advancing your IT career.</p>
+        <a href="#" class="cta-button">Book Free Session</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 IT Career Mentoring. All rights reserved.</p>
+  </footer>
+</body>
+</html>

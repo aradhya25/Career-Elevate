@@ -111,95 +111,96 @@
 
         <section class="users-section hidden">
           <h2>Manage Users</h2>
-         
-            <div class="table-responsive">
-              <table>
-                <thead>
-                  <tr>
-                    <th> <b>ID</b></th>
-                    <th> <b>Name</b></th>
-                    <th> <b>Email</b></th>
-                    <th> <b>Phone</b></th>
-                    <th> <b>Education</b></th>
-                    <th> <b>Interests</b></th>
-                    <th><b>Actions</b></th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <% if (users.length > 0) { %> <% users.forEach(user => { %>
-                  <tr data-user-id="<%= user.id %>">
-                    <td><%= user.id %></td>
-                    <td><%= user.full_name %></td>
-                    <td><%= user.email %></td>
-                    <td><%= user.phone %></td>
-                    <td><%= user.education_level %></td>
-                    <td><%= user.interests %></td>
-                    <td>
-                      
-                        <button class="btn-delete" data-user-id="<%= user.id %>" >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                        
-                      
-                     
-                    </td>
-                  </tr>
-                  <% }); %> <% } else { %>
-                  <tr>
-                    <td colspan="7">No users found.</td>
-                    <!-- Shows message if no users exist -->
-                  </tr>
-                  <% } %>
-                </tbody>
-              </table>
-            </div>
-         
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th><b>ID</b></th>
+                  <th><b>Name</b></th>
+                  <th><b>Email</b></th>
+                  <th><b>Phone</b></th>
+                  <th><b>Education</b></th>
+                  <th><b>Interests</b></th>
+                  <th><b>Actions</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (users.length > 0) { %> <% users.forEach(user => { %>
+                <tr data-user-id="<%= user.id %>">
+                  <td><%= user.id %></td>
+                  <td><%= user.full_name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.phone %></td>
+                  <td><%= user.education_level %></td>
+                  <td><%= user.interests %></td>
+                  <td>
+                    <button class="btn-delete" data-user-id="<%= user.id %>">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% }); %> <% } else { %>
+                <tr>
+                  <td colspan="7">No users found.</td>
+                  <!-- Shows message if no users exist -->
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section class="appointments-section hidden">
-    <h2>View Appointments</h2>
-    <div class="table-responsive">
-        <table>
-            <thead>
+          <h2>View Appointments</h2>
+          <div class="table-responsive">
+            <table>
+              <thead>
                 <tr>
-                     <th> <b>ID</b></th>
-                    <th><b>Student Name</b></th>
-                    <th><b>Phone no</b></th>
-                    <th><b>Date & Time</b></th>
-                    <th> <b>Career Domain</b></th>
-                    <th> <b>Actions</b></th>
+                  <th><b>ID</b></th>
+                  <th><b>Student Name</b></th>
+                  <th><b>Phone no</b></th>
+                  <th><b>Date & Time</b></th>
+                  <th><b>Career Domain</b></th>
+                  <th><b>Actions</b></th>
                 </tr>
-            </thead>
-            <tbody>
-                <% if (allAppointments.length > 0) { %>
-                    <% allAppointments.forEach(appointment => { %>
-                        <tr id="appointment-<%= appointment.id %>">
-                            <td><%= appointment.id %></td>
-                            <td><%= appointment.full_name %></td>
-                            <td><%= appointment.phone_number%></td>
-                            <td><%= appointment.preferred_date %> <%= appointment.preferred_time %></td>
-                            <td>
-                                <span class="status>">
-                                    <%= appointment.career_domain %>
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn-delete-appointment" data-id="<%= appointment.id %>">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    <% }); %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="6" style="text-align: center;">No appointments available.</td>
-                    </tr>
+              </thead>
+              <tbody>
+                <% if (allAppointments.length > 0) { %> <%
+                allAppointments.forEach(appointment => { %>
+                <tr id="appointment-<%= appointment.id %>">
+                  <td><%= appointment.id %></td>
+                  <td><%= appointment.full_name %></td>
+                  <td><%= appointment.phone_number%></td>
+                  <td>
+                    <%= appointment.preferred_date %> <%=
+                    appointment.preferred_time %>
+                  </td>
+                  <td>
+                    <span class="status>">
+                      <%= appointment.career_domain %>
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn-delete-appointment"
+                      data-id="<%= appointment.id %>"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% }); %> <% } else { %>
+                <tr>
+                  <td colspan="6" style="text-align: center">
+                    No appointments available.
+                  </td>
+                </tr>
                 <% } %>
-            </tbody>
-        </table>
-    </div>
-</section>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </main>
     </div>
 

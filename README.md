@@ -8,7 +8,7 @@ Career Elevate is a web-based platform designed to provide personalized career g
 ✅ **Appointment Booking** – Schedule mentorship sessions seamlessly  
 ✅ **Admin Dashboard** – Manage users & appointments efficiently  
 ✅ **Profile Management** – Update user details & track upcoming sessions  
-✅ **Community Forum** – Engage with mentors & peers for career discussions  
+✅ **Opportunities Page** – Find the latest job career opportunities with apply links
 ✅ **AI Chatbot** – Get instant career-related guidance with NLP-powered AI  
 ✅ **Forgot Password** – Secure password recovery system  
 

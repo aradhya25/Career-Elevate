@@ -41,57 +41,61 @@ sideMenuLinks.forEach(link => {
     });
 });
 
-// Handle user actions
-// document.addEventListener("DOMContentLoaded", () => {
-//     const table = document.querySelector("table");
-//     if (!table) return; // Prevent errors if table is missing
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".btn-delete").forEach(button => {
+        button.addEventListener("click", async (event) => {
+            const userId = event.target.closest("button").dataset.userId; // Get user ID from data attribute
+            const row = event.target.closest("tr"); // Get the row element
 
-//     table.addEventListener("click", async (event) => {
-//         const button = event.target.closest("button");
-//         if (!button) return;
+            const confirmDelete = confirm("Are you sure you want to delete this user?");
+            if (!confirmDelete) return;
 
-//         const row = button.closest("tr");
-//         const userId = button.getAttribute("data-id"); // Correct way to get ID
+            try {
+                const response = await fetch(`/admin/users/${userId}`, {
+                    method: "DELETE",
+                });
 
-//         if (!userId) {
-//             console.error("User ID is missing");
-//             alert("Error: User ID is missing.");
-//             return;
-//         }
+                if (response.ok) {
+                    row.remove(); // Remove row from table
+                    alert("User deleted successfully!");
+                } else {
+                    alert("Failed to delete user.");
+                }
+            } catch (error) {
+                console.error("Error deleting user:", error);
+                alert("An error occurred while deleting the user.");
+            }
+        });
+    });
+});
 
-//         if (button.classList.contains("btn-edit")) {
-//             alert(`Edit user ${userId}`);
-//             if (typeof openEditModal === "function") {
-//                 openEditModal(userId);
-//             } else {
-//                 console.warn("openEditModal function is not defined!");
-//             }
-//         }
 
-//         if (button.classList.contains("btn-delete")) {
-//             const confirmDelete = confirm(`Are you sure you want to delete user with ID: ${userId}?`);
-//             if (confirmDelete) {
-//                 try {
-//                     const response = await fetch(`/admin/users/${userId}`, {
-//                         method: "DELETE",
-//                         headers: { "Content-Type": "application/json" },
-//                     });
+document.querySelectorAll(".btn-delete-appointment").forEach(button => {
+    button.addEventListener("click", function () {
+        const appointmentId = this.getAttribute("data-id");
 
-//                     if (!response.ok) {
-//                         const errorData = await response.json();
-//                         throw new Error(errorData.message || "Failed to delete user.");
-//                     }
+        if (!appointmentId || appointmentId === "undefined") {
+            alert("Invalid appointment ID.");
+            return;
+        }
 
-//                     alert("User deleted successfully!");
-//                     row.remove();
-//                 } catch (error) {
-//                     console.error("Error deleting user:", error);
-//                     alert("An error occurred while deleting the user. Please try again.");
-//                 }
-//             }
-//         }
-//     });
-// });
+        if (confirm("Are you sure you want to delete this appointment?")) {
+            fetch(`/delete-appointment/${appointmentId}`, {
+                method: "DELETE"
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Appointment deleted successfully!");
+                    location.reload(); // Refresh the page after deleting
+                } else {
+                    alert("Failed to delete appointment.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    });
+});
 
 
 

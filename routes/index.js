@@ -26,12 +26,12 @@ app.get("/afterlogin", (req, res) => {
   res.render("afterlogin.ejs", { fullName: req.session.user.full_name });
 });
 
-app.get("/login/readmore",(req,res)=>{
+app.get("/login/readmore", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login"); // Redirect if session is not available
   }
   res.render("afterloginreadmore.ejs");
-})
+});
 // app.get("/admin", (req, res) => {
 //   if(!req.session.admin){
 //     res.redirect("/adminlogin");
@@ -42,4 +42,12 @@ app.get("/login/readmore",(req,res)=>{
 app.get("/adminlogin", (req, res) => {
   res.render("adminlogin.ejs", { error: null });
 });
+
+app.get("/admin/post-opportunity", (req, res) => {
+  if (!req.session.admin) {
+    return res.redirect("/adminlogin"); 
+  }
+  res.render("jobopportunities.ejs");
+});
+
 module.exports = app;

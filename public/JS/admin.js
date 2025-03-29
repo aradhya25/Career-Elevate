@@ -14,7 +14,7 @@ const appointmentsSection = document.querySelector('.appointments-section');
 
 sideMenuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
+       // e.preventDefault();
         
         // Remove active class from all links
         sideMenuLinks.forEach(l => l.classList.remove('active'));
@@ -111,7 +111,7 @@ navbarLinks.forEach(link => {
             return; // Do not override default behavior
         }
 
-        e.preventDefault(); // Prevent default navigation for other links
+        // e.preventDefault(); // Prevent default navigation for other links
 
         // Remove active class from all navbar links
         navbarLinks.forEach(l => l.classList.remove('active'));

@@ -29,6 +29,7 @@ const authRoutes = require("./routes/auth");
 const appointmentroutes=require('./routes/appointment');
 const profileroutes=require("./routes/profilemanagement");
 const adminroutes=require("./routes/adminmanagement");
+const jobpostroutes=require("./routes/jobpostmanagement");
 
 // Use routes
 
@@ -38,6 +39,7 @@ app.use("/", authRoutes);
 app.use("/",appointmentroutes);
 app.use("/",profileroutes);
 app.use("/",adminroutes);
+app.use("/",jobpostroutes);
 
 // Start the server
 app.listen(port, () => {

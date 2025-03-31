@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const authmiddleware = require("../middlewares/usermiddleware");
+const db=require("../config/db");
 //mainpage
 app.get("/mainpage", (req, res) => {
   res.render("mainpage.ejs");
@@ -50,10 +51,21 @@ app.get("/admin/post-opportunity", (req, res) => {
   res.render("jobopportunities.ejs");
 });
 
-app.get("/profile/view-opportunities",(req,res)=>{
-  if(!req.session.user){
-    return res.redirect("/login"); 
+app.get("/profile/view-opportunities", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
   }
-  res.render("opportunityuser.ejs");
-})
+
+  const query = "SELECT * FROM opportunities";
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Error fetching data:", err);
+      return res.status(500).send("Database error");
+    }
+
+    // Render the page with fetched opportunities
+    res.render("opportunityuser.ejs", { opportunities: results });
+  });
+});
 module.exports = app;

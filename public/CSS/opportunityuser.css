@@ -90,13 +90,17 @@ body {
 }
 
 .card-category {
-    background-color: #dbeafe;
+    background-color: #dbeafe; /* Light blue */
     color: #1e40af;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.5px;
+    display: inline-block;
 }
+
 
 .card-content {
     display: flex;
@@ -113,12 +117,13 @@ body {
 
 .card-description {
     color: #6b7280;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    line-clamp: 3;
+    white-space: pre-line; 
+    word-wrap: break-word; 
+    overflow: visible; 
+    display: block; 
+    max-height: none; 
 }
+
 
 
 

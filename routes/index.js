@@ -50,4 +50,10 @@ app.get("/admin/post-opportunity", (req, res) => {
   res.render("jobopportunities.ejs");
 });
 
+app.get("/profile/view-opportunities",(req,res)=>{
+  if(!req.session.user){
+    return res.redirect("/login"); 
+  }
+  res.render("opportunityuser.ejs");
+})
 module.exports = app;

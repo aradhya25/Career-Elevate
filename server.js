@@ -30,6 +30,7 @@ const appointmentroutes=require('./routes/appointment');
 const profileroutes=require("./routes/profilemanagement");
 const adminroutes=require("./routes/adminmanagement");
 const jobpostroutes=require("./routes/jobpostmanagement");
+const viewopportunityroutes=require("./routes/useropportunitiesmanagement");
 
 // Use routes
 
@@ -40,6 +41,7 @@ app.use("/",appointmentroutes);
 app.use("/",profileroutes);
 app.use("/",adminroutes);
 app.use("/",jobpostroutes);
+app.use("/",viewopportunityroutes);
 
 // Start the server
 app.listen(port, () => {

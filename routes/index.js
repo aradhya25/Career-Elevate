@@ -22,14 +22,14 @@ app.get("/readmore", (req, res) => {
 
 app.get("/afterlogin", (req, res) => {
   if (!req.session.user) {
-    return res.redirect("/login"); // Redirect if session is not available
+    return res.redirect("/login"); 
   }
   res.render("afterlogin.ejs", { fullName: req.session.user.full_name });
 });
 
 app.get("/login/readmore", (req, res) => {
   if (!req.session.user) {
-    return res.redirect("/login"); // Redirect if session is not available
+    return res.redirect("/login"); 
   }
   res.render("afterloginreadmore.ejs");
 });
@@ -64,8 +64,15 @@ app.get("/profile/view-opportunities", (req, res) => {
       return res.status(500).send("Database error");
     }
 
-    // Render the page with fetched opportunities
     res.render("opportunityuser.ejs", { opportunities: results });
   });
 });
+
+app.get("/forgot-password",(req,res)=>{
+  res.render("forgotpassword.ejs");
+});
+
+// app.get("/reset-password",(req,res)=>{
+//   res.render("resetpassword.ejs");
+// });
 module.exports = app;

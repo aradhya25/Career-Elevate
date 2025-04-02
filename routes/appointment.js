@@ -6,7 +6,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.post("/book-consultation", (req, res) => {
-    // Extracting user input from request body
+    
     const {
       full_name,
       email,
@@ -20,7 +20,6 @@ app.post("/book-consultation", (req, res) => {
 
     console.log("Received Form Data:", req.body); 
   
-    // SQL query to insert appointment details into the database
     const insertQuery = `
       INSERT INTO appointments (
         full_name, email, phone_number, career_domain, 
@@ -28,7 +27,7 @@ app.post("/book-consultation", (req, res) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
   
-    // Execute the SQL query
+   
     db.query(
       insertQuery,
       [
@@ -39,7 +38,7 @@ app.post("/book-consultation", (req, res) => {
         preferred_date,
         preferred_time,
         mode_of_consultation,
-        additional_message || null,// Store null if additional_message is empty
+        additional_message || null,
       ],
       (err, result) => {
         if (err) {
@@ -51,7 +50,7 @@ app.post("/book-consultation", (req, res) => {
   
         // Sending a confirmation email
         
-        // Rendering the success page with relevant details
+        
         res.render("bookingsuccess", {
           fullName: full_name,
           careerDomain: career_domain,
@@ -75,10 +74,10 @@ app.post("/book-consultation", (req, res) => {
         service: 'gmail',
         host: "smtp.gmail.com",
         port: 587,
-        secure: false, // Use true for port 465
+        secure: false, 
         auth: {
-            user: process.env.EMAIL_USER,  // Your Gmail ID
-            pass: process.env.APP_PASSWORD,  // Your App Password (16-character)
+            user: process.env.EMAIL_USER,  
+            pass: process.env.APP_PASSWORD,  
         },
     });
 

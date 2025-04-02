@@ -27,11 +27,11 @@ app.get("/services/law-legal", (req, res) => {
   res.render("lawandlegalservices.ejs");
 });
 
-// Route to handle "Book a Session" with authentication check
+
 app.get("/book-session/:topic", authmiddleware, (req, res) => {
   const topic = req.params.topic;
 
-  // List of valid topics
+  
   const validTopics = [
     "it-career",
     "hsc-mentoring",
@@ -47,7 +47,7 @@ app.get("/book-session/:topic", authmiddleware, (req, res) => {
     return res.send("Page not found");
   }
 
-  res.render("inputform.ejs", { topic, user: req.session.user }); // Pass topic to the form
+  res.render("inputform.ejs", { topic, user: req.session.user }); 
 });
 
 module.exports = app;

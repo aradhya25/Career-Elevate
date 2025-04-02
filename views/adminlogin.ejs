@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="/CSS/adminlogin.css">
 </head>
 <body>
+   
     <div class="login-container">
         <div class="login-card">
+            <% if (error) { %>
+                <div class="error-msg"> 
+                    <%= error %>
+                </div>
+            <% } %>
             <div class="logo">
                 <img src="/images/mentor_another_logo-removebg-preview.png" alt="Logo">
             </div>

@@ -4,14 +4,14 @@ const db = require("../config/db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-// Middleware to parse request body
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.post("/register", (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
 
-    // Check if password and confirm password match
+    
     if (password !== confirmPassword) {
         console.log("password does not match");
     }
@@ -67,14 +67,14 @@ app.post("/login", (req, res) => {
             return res.status(400).send("Email not found, please register first.");
         }
 
-        const user = result[0]; // Fetch user details
+        const user = result[0]; 
 
         if (!user.password_hash) {
             console.error("No password found for this user in the database.");
             return res.status(500).send("Password not found.");
         }
 
-        // Compare the provided password with the stored hashed password
+      
         bcrypt.compare(password, user.password_hash, (err, isMatch) => {
             if (err) {
                 console.error("Password Comparison Error:", err);
@@ -82,7 +82,7 @@ app.post("/login", (req, res) => {
             }
 
             if (isMatch) {
-                // Store user details in session
+                
                 req.session.user = {
                     id: user.id,
                     email: user.email,
@@ -90,7 +90,7 @@ app.post("/login", (req, res) => {
                     phone:user.phone,
                 };
             
-                // Redirect to after login page to ensure session persistence
+                
                 return res.redirect("/afterlogin");
             }else {
                 return res.send("Incorrect password, please try again.");
@@ -116,12 +116,12 @@ app.get("/logout", (req, res) => {
 app.post("/adminlogin", (req, res) => {
     const { email, password } = req.body;
 
-    // Check if email or password is empty
+   
     if (!email || !password) {
         return res.render("adminlogin.ejs", { error: "All fields are required" });
     }
 
-    // Query database for admin user
+    
     db.query("SELECT * FROM admin WHERE email = ?", [email], (err, result) => {
         if (err) {
             console.error("Database error:", err);
@@ -134,7 +134,7 @@ app.post("/adminlogin", (req, res) => {
 
         const admin = result[0];
 
-        // Compare hashed password
+        
         bcrypt.compare(password, admin.password, (bcryptErr, isMatch) => {
             if (bcryptErr) {
                 console.error("Bcrypt error:", bcryptErr);
@@ -145,7 +145,7 @@ app.post("/adminlogin", (req, res) => {
                 return res.render("adminlogin.ejs", { error: "Invalid Credentials" });
             }
 
-            // If password matches, set session and redirect
+            
             req.session.admin = { id: admin.id, email: admin.email };
             return res.redirect("/admin");
         });
@@ -155,7 +155,7 @@ app.post("/adminlogin", (req, res) => {
 
 app.get("/adminlogout", (req, res) => {
     if (!req.session) {
-        return res.redirect("/adminlogin"); // Ensure session exists before destroying
+        return res.redirect("/adminlogin"); 
     }
 
     req.session.destroy((err) => {
@@ -164,7 +164,7 @@ app.get("/adminlogout", (req, res) => {
             return res.status(500).send("Failed to log out"); 
         }
         
-        return res.redirect("/adminlogin"); // Ensure no further execution after redirect
+        return res.redirect("/adminlogin"); 
     });
 });
 

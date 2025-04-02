@@ -64,7 +64,7 @@ app.post("/profile/edit", (req, res) => {
 
             //req.session.user = { full_name, email, phone, education_level, interests };
 
-            res.redirect("/profile",{message:"Profile Updated Successfully"});
+            res.redirect("/profile");
         }
     );
 });

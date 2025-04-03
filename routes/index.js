@@ -72,6 +72,8 @@ app.get("/forgot-password",(req,res)=>{
   res.render("forgotpassword.ejs");
 });
 
+
+
 // app.get("/reset-password",(req,res)=>{
 //   res.render("resetpassword.ejs");
 // });

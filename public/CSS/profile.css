@@ -53,7 +53,7 @@ body {
 }
 
 .logo img {
-  height: 60px;
+  height: 46px;
   width: auto;
 }
 
@@ -111,11 +111,18 @@ body {
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 115px; /* Reduced size */
+  height: 115px;
   border-radius: 50%;
-  margin-bottom: 1rem;
-  border: none;
+  object-fit: cover;  /* Ensures the image fills the container without distortion */
+  border: 2px solid #ddd;  /* Lighter border for a subtle effect */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Slightly softer shadow */
+  margin-bottom: 0.8rem; /* Adjusted spacing */
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.profile-pic:hover {
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
 }
 
 .side-menu {

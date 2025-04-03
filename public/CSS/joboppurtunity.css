@@ -12,14 +12,15 @@ body {
 }
 
 .container {
-    max-width: 42rem;
+    padding: 20px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .form-card {
     background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
 }
 
@@ -61,21 +62,23 @@ label {
 input,
 select,
 textarea {
+    min-height: 40px;
     width: 100%;
     padding: 0.5rem 0.75rem;
     border: 1px solid rgb(209, 213, 219);
-    border-radius: 0.375rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
     font-size: 0.875rem;
-    transition: all 150ms ease-in-out;
+    transition: 0.3s ease-in-out;
     background-color: white;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
+    border-color: #007bff;
     outline: none;
-    border-color: rgb(59, 130, 246);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 textarea {
@@ -89,19 +92,21 @@ textarea {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1rem;
-    background-color: rgb(37, 99, 235);
+    padding: 12px 16px;
+    background: #007bff;
     color: white;
     border: none;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 500;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
-    transition: background-color 150ms ease-in-out;
+    transition: 0.3s;
 }
 
 .submit-btn:hover {
-    background-color: rgb(29, 78, 216);
+    background: #0056b3;
+    transform: translateY(-2px);
 }
 
 .submit-btn:focus {

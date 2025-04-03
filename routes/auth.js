@@ -101,14 +101,15 @@ app.post("/login", (req, res) => {
 
 
 app.get("/logout", (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.error("Logout error:", err);
-            return res.status(500).send("Error logging out.");
-        }
-        res.redirect("/mainpage"); 
-    });
+    if (!req.session.user) {
+        return res.redirect("/mainpage"); // Redirect if no user is logged in
+    }
+
+    delete req.session.user; // Remove only the user session data
+
+    res.redirect("/mainpage"); // Redirect after logout
 });
+
 
 
 //admin
@@ -154,19 +155,15 @@ app.post("/adminlogin", (req, res) => {
 
 
 app.get("/adminlogout", (req, res) => {
-    if (!req.session) {
+    if (!req.session.admin) {
         return res.redirect("/adminlogin"); 
     }
 
-    req.session.destroy((err) => {
-        if (err) {
-            console.error("Error destroying session:", err);
-            return res.status(500).send("Failed to log out"); 
-        }
-        
-        return res.redirect("/adminlogin"); 
-    });
+    delete req.session.admin; // Remove only the admin session data
+    
+    return res.redirect("/adminlogin"); 
 });
+
 
 
 

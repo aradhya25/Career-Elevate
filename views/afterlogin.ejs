@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Elevate - Your Career Path</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/afterlogin.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/images/mentor_another_logo-removebg-preview.png" alt="Logo">
+            <span  class="website-name">Career Elevate</span>
+        </div>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#home"  data-section="hero">HOME</a>
+            <a href="#services" data-section="services">SERVICES</a>
+            <a href="#FAQs" data-section="FAQs">FAQs</a>
+            <a href="#contact" data-section="contact">CONTACT</a>
+            <a href="/profile" data-section="profile">PROFILE</a>
+            
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="animate-on-scroll">
+                Welcome, <span class="highlight"><%= fullName %></span> <br>  
+                Your journey to <span class="highlight">Career Excellence</span> starts now.
+            </h1>
+            
+            
+
+            <p class="animate-on-scroll">Building trust, one mentorship at a time, for your CAREER journey.</p>
+            <div class="hero-buttons animate-on-scroll">
+               <a href="http://localhost:8080/login/readmore">
+                <button class="btn primary">READ MORE</button>
+               </a> 
+                
+            </div>
+        </div>
+        <div class="hero-image animate-on-scroll">
+            <img id="hero-slider" src="/images/mainimage.jpg" alt="Desk Setup">
+        </div>
+    </section>
+
+    <section class="about animate-on-scroll" id="about">
+        <h2>ABOUT US</h2>
+        <div class="about-card">
+            <div class="about-logo">
+                <img src="/images/professional.jpg" alt="Mentored Logo">
+            </div>
+            <div class="about-text">
+                <p>At Career Elevate, we are committed to helping students navigate their career paths with confidence. We connect students with experienced mentors who provide personalized guidance, insights, and support to help them make informed decisions about their future.  
+
+                    Our platform makes it easy to explore different career options, understand various fields, and book mentorship sessions with professionals who can share real-world experiences and advice. We believe that the right guidance at the right time can make a huge difference in shaping a successful career.  
+                    
+                    Whether you’re unsure about your next step or looking for expert advice, we’re here to support you on your journey. Join us and take your Career Elevate toward a brighter future! 🚀</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services animate-on-scroll" id="services">
+        <h2>SERVICES</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>IT career mentoring</h3>
+                <p>IT Career Mentoring connects students and professionals with experts for guidance on specializations, resumes, and interviews to accelerate growth in tech.</p>
+                <a href="http://localhost:8080/services/it-career" class="learn-more">Learn More </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h3>HSC Mentoring</h3>
+                <p>HSC Mentoring helps students with subject guidance, career choices, and exam strategies, connecting them with experts for personalized support.</p>
+                <a href="http://localhost:8080/services/hsc-mentoring" class="learn-more">Learn More </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="/images/interviewlogo.png" alt="interviewprep" style="height: 65px;"></div>
+                <h3>Interview Preparation</h3>
+                <p>Interview Preparation offers expert guidance on resumes, mock interviews, and essential skills to boost confidence and secure your dream job.</p>
+                <a href="http://localhost:8080/services/interview-prep" class="learn-more">Learn More </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Commerce & Management </h3>
+                <p>Commerce & Management Mentoring provides expert guidance on career paths, skills, and opportunities to help students excel in business and finance.</p>
+                <a href="http://localhost:8080/services/commerce-management" class="learn-more">Learn More </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><img src="/images/arts&humanitites.png" alt="artshumanities" style="height: 65px;"></div>
+                <h3>Arts & Humanities</h3>
+                <p>Arts & Humanities Mentoring offers expert guidance on career paths, skills, and opportunities to help students thrive in creative and academic fields.</p>
+                <a href="http://localhost:8080/services/arts-humanities" class="learn-more">Learn More </a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon"><img src="/images/govtsector.png" alt="Government" style="height: 65px;"></div>
+                <h3>Government & Public Sector</h3>
+                <p>Government & Public Sector Mentoring provides guidance on exams, careers, and skills to help students navigate opportunities in public service.</p>
+                <a href="http://localhost:8080/services/government-public" class="learn-more">Learn More </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><img src="/images/jeeneetlogo.png" alt="jeeNeet" style="height: 65px;"></div>
+                <h3>JEE & NEET Guidance</h3>
+                <p>JEE & NEET Mentoring offers expert guidance on exam strategies, subject mastery, and career paths to help students achieve their medical and engineering dreams.</p>
+                <a href="http://localhost:8080/services/jee-neet-guidance" class="learn-more">Learn More </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"> <img src="/images/law_logo-removebg-preview.png" alt="lawlogo" style="height: 60px;"></div>
+                <h3>Law & Legal Services</h3>
+                <p>Law & Legal Services Mentoring provides guidance on career paths, exams, and essential skills to help students succeed in the legal profession.</p>
+                <a href="http://localhost:8080/services/law-legal" class="learn-more">Learn More </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="FAQs animate-on-scroll" id="FAQs">
+        <h2>Frequently Asked Questions ?</h2>
+
+        <div class="FAQs-card">
+            <div class="FAQs-date">1.</span></div>
+            <div class="FAQs-info">
+                <h3>What is this website about?</h3>
+                <p>This platform provides career guidance and mentorship to students, helping them explore various career options, book mentorship sessions, and receive expert advice.</p>
+            </div>
+            
+            
+        </div>
+        
+            <div class="FAQs-card">
+                <div class="FAQs-date">2.</div>
+                <div class="FAQs-info">
+                    <h3>How does the mentorship program work?</h3>
+                    <p>Our mentorship program connects you with experienced professionals in your chosen field. You can browse mentor profiles, book sessions, and receive personalized guidance to help you make informed career decisions.</p>
+                </div>
+                
+            </div>
+            <div class="FAQs-card">
+                <div class="FAQs-date">3.</div>
+                <div class="FAQs-info">
+                    <h3>Is the mentorship free or paid?</h3>
+                    <p>Some mentors offer free sessions, while others may charge a fee based on their expertise and time. You can check the mentor’s profile for pricing details before booking a session.</p>
+                </div>
+            
+            </div>
+            <div class="FAQs-card">
+                <div class="FAQs-date">4.</span></div>
+                <div class="FAQs-info">
+                    <h3>What should I expect in my first mentoring session?</h3>
+                    <p>Your first session typically involves getting acquainted, discussing your career goals, identifying areas for development, and establishing expectations for the mentorship relationship.</p>
+                </div>
+                
+                
+            </div>
+
+            <div class="FAQs-card">
+                <div class="FAQs-date">5.</span></div>
+                <div class="FAQs-info">
+                    <h3>Can I change mentors if we're not a good fit?</h3>
+                    <p>Yes, you can request a different mentor if your current match isn't working out. Simply contact our support team, and we'll help facilitate a transition to ensure you find the right guidance.</p>
+                </div>
+                
+                
+            </div>
+
+           
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/mentor_another_logo-removebg-preview.png"Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#sessions">FAQs</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="/images/Facebook_Logo_2023.png" alt="Facebook" style="height: 40px;"></a>
+                <a href="#"><img src="/images/linkedin.png" alt="LinkedIn" height="60px"></a>
+                <a href="#"><img src="/images/instagram.png" alt="Instagram" height="47px"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Career Elevate. All rights reserved.</p>
+            <p>Privacy Policy</p>
+        </div>
+    </footer>
+    <script src="/JS/main.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/03/27/16/20250327165140-JSGSBA9O.js"></script>
+</body>
+</html>

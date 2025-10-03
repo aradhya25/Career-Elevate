@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Dashboard</title>
+    <link rel="stylesheet" href="/CSS/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/images/mentor_another_logo-removebg-preview.png" alt="Logo" />
+            <span>My Profile</span>
+        </div>
+        <div class="nav-links">
+            <a href="/afterlogin" >Home</a>
+            <a href="#" class="active">Dashboard</a>
+            <a href="/profile/view-opportunities">View Opportunities</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="/images/profileimage.jpg" alt="Profile Picture" class="profile-pic">
+                <h3><%= user ? user.full_name : "Guest" %></h3>
+                <p>Student</p>
+            </div>
+            <nav class="side-menu">
+                <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                <a href="#"><i class="fas fa-calendar-check"></i> Appointments</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="dashboard-section">
+               
+                <h2>Upcoming Appointments</h2>
+                <div class="appointments-grid">
+                    <% if (appointments && appointments.length > 0) { %>
+                        <% appointments.forEach(appointment => { %>
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <span class="date" data-appointment-date="<%= appointment.preferred_date.toISOString().split('T')[0] %>">
+                                <%= new Date(appointment.preferred_date).toLocaleDateString('en-US', { timeZone: 'Asia/Kolkata' }) %>
+                            </span>
+                            
+                              
+                            <span class="status <%= appointment.mode_of_consultation === 'Online' ? 'confirmed' : 'pending' %>">
+                                <%= appointment.mode_of_consultation %>
+                            </span>
+                        </div>
+                        <div class="appointment-body">
+                            <h4><%= appointment.career_domain %></h4>
+                            <p><i class="fas fa-user"></i> <%= appointment.full_name %></p>
+                            <p><i class="fas fa-clock"></i> <%= appointment.preferred_time %></p>
+                            <p><i class="fas fa-comments"></i> <%= appointment.additional_message || "No additional message" %></p>
+                        </div>
+                        <div class="appointment-actions">
+                            <% if (appointment.mode_of_consultation === 'Online') { %>
+                                <button class="btn-join">Session Link sent to Email</button>
+                            <% } else { %>
+                                <button class="btn-join" disabled>Offline Appointment</button>
+                            <% } %>
+                            <button class="btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <% } else { %>
+                        <p>No upcoming appointments.</p>
+                    <% } %>
+                </div>
+            </section>
+
+            <section class="edit-profile-section hidden">
+                <h2>Edit Profile</h2>
+                <form class="profile-form" action="/profile/edit" method="POST">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="full_name" value="<%= user.full_name %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" value="<%= user.email %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" name="phone" value="<%= user.phone %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="education_level">Education Level</label>
+                        <select id="education_level" name="education_level">
+                            <option value="High School" <%= user.education_level === "High School" ? "selected" : "" %>>High School</option>
+        <option value="Bachelor's Degree" <%= user.education_level === "Bachelor's Degree" ? "selected" : "" %>>Bachelor's Degree</option>
+        <option value="Master's Degree" <%= user.education_level === "Master's Degree" ? "selected" : "" %>>Master's Degree</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">Interests</label>
+                        <textarea id="interests" name="interests" rows="4"><%=  user.interests  %></textarea>
+                    </div>
+                    <button type="submit" class="btn-save" onclick="alert('Profile updated successfully!')">Save Changes</button>
+
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section contact-info">
+                <h4>Contact Info</h4>
+                <p>Email: <a href="mailto:careerelevate2025@gmail.com">careerelevate2025@gmail.com</a></p>
+                <p>Phone: <a href="tel:+918668586135">+91-8668586135</a></p>
+            </div>
+            <div class="footer-section quick-links">
+                <h4>Quick Links</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CareerElevate. All rights reserved.</p>
+        </div>
+    </footer>
+    
+
+    <script type="module" src="/JS/profile.js"></script>
+</body>
+</html>

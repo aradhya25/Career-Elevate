@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Elevate - Arts & Humanities Guidance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Color Theme */
+        :root {
+            --color-primary: #8B5E3C;    /* Terracotta */
+            --color-primary-hover: #6F4A2F;
+            --color-secondary: #D4A373;  /* Warm Beige */
+            --color-accent: #6B8F71;     /* Sage Green */
+            --color-bg-dark: #2D2424;    /* Dark Clay */
+            --color-bg-light: #4A3F3F;   /* Medium Clay */
+            --color-text: #F5E6D3;       /* Parchment */
+            --color-text-muted: #B8A99A;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--color-text);
+            background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg-light));
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-bg-dark));
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Disciplines Section */
+        .disciplines {
+            padding: 5rem 2rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--color-secondary);
+        }
+
+        .discipline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .discipline-card {
+            background: var(--color-bg-light);
+            padding: 2rem;
+            border-radius: 15px 50px;
+            border: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .discipline-card:hover {
+            transform: translateY(-5px);
+            background: var(--color-primary);
+        }
+
+        .discipline-card .icon {
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .discipline-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .discipline-card p {
+            color: var(--color-text-muted);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: rgba(45, 36, 36, 0.9);
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-bg-light);
+            border-radius: 10px;
+        }
+
+        .benefit-icon {
+            background: var(--color-accent);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-header img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: sepia(0.3) contrast(1.1);
+            border: 2px solid var(--color-primary);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--color-text-muted);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-bg-dark));
+        }
+
+        /* Buttons */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--color-secondary);
+            color: var(--color-bg-dark);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--color-primary);
+            color: var(--color-text);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--color-bg-dark);
+            border-top: 2px solid var(--color-primary);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+        }
+
+        .footer-logo svg {
+            color: var(--color-secondary);
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Unlock Your Creative Potential</h1>
+                <p>Guiding passionate learners through the world of arts, literature, and cultural studies</p>
+                <a href="/book-session/arts-humanities">
+
+                    <button class="cta-button">
+                        Begin Your Journey
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </a>
+            </div>
+        </header>
+        <br>
+        <!-- Disciplines Section -->
+        <section class="disciplines">
+            <h2>Explore Disciplines</h2>
+            <div class="discipline-grid">
+                <div class="discipline-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 9l4-4 4 4"/><path d="M16 15l-4 4-4-4"/></svg>
+                    </div>
+                    <h3>Literature & Philosophy</h3>
+                    <p>Explore classic and contemporary works across global traditions</p>
+                </div>
+                <div class="discipline-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                    </div>
+                    <h3>Visual Arts</h3>
+                    <p>Master traditional techniques and modern digital media</p>
+                </div>
+                <div class="discipline-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M8 10H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4"/><path d="M16 10h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4"/><path d="M8 14H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4"/><path d="M16 14h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"/></svg>
+                    </div>
+                    <h3>Cultural Studies</h3>
+                    <p>Understand diverse societies and historical contexts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <h2>Why Choose Us?</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m8.5 8.5-3 3"/><path d="M12 22v-4"/><path d="m15.5 15.5 3-3"/><path d="M2 12h4"/><path d="m22 12-4 4"/></svg>
+                    </div>
+                    <h3>Interdisciplinary Learning</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Expert Mentors</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>Flexible Programs</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Student Experiences</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=128&h=128&q=80" alt="Emma Wilson">
+                        <div>
+                            <h3>Emma Wilson</h3>
+                            <p>Art History Graduate</p>
+                        </div>
+                    </div>
+                    <p class="quote">"The program transformed my understanding of cultural contexts in art."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=128&h=128&q=80" alt="Raj Patel">
+                        <div>
+                            <h3>Raj Patel</h3>
+                            <p>Literature Student</p>
+                        </div>
+                    </div>
+                    <p class="quote">"The interdisciplinary approach deepened my analytical skills significantly."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Start Your Creative Journey</h2>
+                <p>Join our community of passionate learners and creators</p>
+                <br>
+                <br>
+                <a href="/book-session/arts-humanities">
+
+
+                    <button class="cta-button">
+                        Enroll Now
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M8.5 8.5 12 12l-5 5"/><path d="M12 22v-4"/><path d="m15.5 15.5-3-3 5-5"/><path d="M2 12h4"/><path d="m22 12-4 4"/></svg>
+                    <span>Career Elevate</span>
+                </div>
+                <p>&copy; 2025 All rights reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Interactive Elements
+        // document.querySelectorAll('.cta-button').forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         alert('Redirecting to enrollment form..');
+        //     });
+        // });
+
+        // Card Hover Effects
+        document.querySelectorAll('.discipline-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-7px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Elevate | Professional Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", "Lato", sans-serif;
+
+
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       background-color: white;
+        
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* .background-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(255, 214, 10, 0.1);
+        border-radius: 50%;
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(10vw, 10vh);
+        }
+        50% {
+          transform: translate(-5vw, 15vh);
+        }
+        75% {
+          transform: translate(7vw, -8vh);
+        }
+      } */
+
+      .login-container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 440px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        position: absolute;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .login-container:hover {
+        transform: translateY(-5px);
+      }
+
+      .success-message {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        border: 1px solid #c3e6cb;
+        margin-bottom: 20px;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .login-header h1 {
+        color: #0f172a;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(45deg, #0f172a, #475569);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .login-header p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #2563EB;
+        box-shadow: 0 0 4px rgba(37, 99, 235, 0.5);
+        background: white;
+        
+      }
+
+      .password-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0;
+        font-size: 0.9rem;
+      }
+
+      .login-button {
+        width: 100%;
+        padding: 15px;
+        background-color: #2563EB;
+
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 25px;
+        color: #475569;
+      }
+
+      .signup-link a {
+        color: #2563EB;
+
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .signup-link a:hover {
+        color: #3B82F6;
+      }
+
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 30px;
+        }
+
+        .login-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .form-group input {
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background-particles">
+      <div
+        class="particle"
+        style="width: 200px; height: 200px; top: 20%; left: 10%"
+      ></div>
+      <div
+        class="particle"
+        style="width: 150px; height: 150px; top: 60%; right: 15%"
+      ></div>
+    </div>
+
+    <div class="login-container">
+      <% if (message) { %>
+      <div class="success-message"><%= message %></div>
+      <% } %>
+
+      <div class="login-header">
+        <h1>Career Elevate</h1>
+        <p>Transform Your Ambitions Into Achievements</p>
+      </div>
+
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <button type="submit" class="login-button">Sign In</button>
+
+        <div class="signup-link">
+          New to CareerElevate?
+          <a href="http://localhost:8080/register">Request credentials</a>
+        </div>
+
+        <div class="signup-link">
+          <a href="/forgot-password">Forgot Password</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

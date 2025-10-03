@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Opportunities</title>
+    <link rel="stylesheet" href="/CSS/opportunityuser.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">Career Portal</h1>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="user-view">
+            <h2 class="section-title">Available Opportunities</h2>
+            <div class="opportunities-grid">
+                <% opportunities.forEach(opportunity => { %>
+                    <div class="opportunity-card">
+                        <div class="card-header">
+                            <h3 class="card-title"><%= opportunity.title %></h3>
+                            <span class="card-category"><%= opportunity.category %></span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                    <rect x="9" y="9" width="6" height="6"></rect>
+                                </svg>
+                                <%= opportunity.company %>
+                            </div>
+                            <div class="card-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <%= opportunity.location %>
+                            </div>
+                            <p class="card-description"><%= opportunity.description %></p>
+                            <a href="<%= opportunity.apply_link %>" target="_blank" rel="noopener noreferrer" class="card-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

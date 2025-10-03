@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/CSS/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img
+          src="/images/mentor_another_logo-removebg-preview.png"
+          alt="Logo"
+        />
+        <span>Career Elevate</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">Dashboard</a>
+         <a href="/admin/post-opportunity">Post Opportunity</a>
+            <!-- <a href="#">Appointments</a>  -->
+        <a href="/adminlogout">Logout</a>
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <div class="container">
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img src="/images/profileimage.jpg" alt="Admin Profile" class="profile-pic">
+          <h3>Admin User</h3>
+          <p>System Administrator</p>
+        </div>
+        <nav class="side-menu">
+          <a href="#" class="active"
+            ><i class="fas fa-chart-line"></i> Dashboard</a
+          >
+          <a href="#"><i class="fas fa-users"></i> Manage Users</a>
+          <a href="#"
+            ><i class="fas fa-calendar-check"></i> View Appointments</a
+          >
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section class="dashboard-section">
+          <h2>Dashboard Overview</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <i class="fas fa-users"></i>
+              <div class="stat-info">
+                <h3>Total Users</h3>
+                <p class="stat-number"><%= totalUsers %></p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-calendar-check"></i>
+              <div class="stat-info">
+                <h3>Total Appointments</h3>
+                <p class="stat-number"><%=totalAppointments %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-appointments">
+            <h3>Recent Appointments</h3>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th><b>ID</b></th>
+                    <th><b>Student</b></th>
+                    <th><b>Phone no</b></th>
+                    <th><b>Date & Time</b></th>
+                    <th><b>Career Domain</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (recentAppointments.length > 0) { %> <%
+                  recentAppointments.forEach(appointment => { %>
+                  <tr>
+                    <td><%= appointment.id %></td>
+                    <td><%= appointment.full_name %></td>
+                    <td><%= appointment.phone_number %></td>
+                    <td>
+                      <%= appointment.preferred_date %>,
+                      <%=appointment.preferred_time%>
+                    </td>
+                    <td>
+                      <!-- <span class="status <%= appointment.career_domain.toLowerCase() %>"> -->
+                      <%= appointment.career_domain %>
+                      <!-- </span> -->
+                    </td>
+                  </tr>
+                  <% }) %> <% } else { %>
+                  <tr>
+                    <td colspan="5">No recent appointments available</td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="users-section hidden">
+          <h2>Manage Users</h2>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th><b>ID</b></th>
+                  <th><b>Name</b></th>
+                  <th><b>Email</b></th>
+                  <th><b>Phone</b></th>
+                  <th><b>Education</b></th>
+                  <th><b>Interests</b></th>
+                  <th><b>Actions</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (users.length > 0) { %> <% users.forEach(user => { %>
+                <tr data-user-id="<%= user.id %>">
+                  <td><%= user.id %></td>
+                  <td><%= user.full_name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.phone %></td>
+                  <td><%= user.education_level %></td>
+                  <td><%= user.interests %></td>
+                  <td>
+                    <button class="btn-delete" data-user-id="<%= user.id %>">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% }); %> <% } else { %>
+                <tr>
+                  <td colspan="7">No users found.</td>
+                  <!-- Shows message if no users exist -->
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="appointments-section hidden">
+          <h2>View Appointments</h2>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th><b>ID</b></th>
+                  <th><b>Student Name</b></th>
+                  <th><b>Phone no</b></th>
+                  <th><b>Date & Time</b></th>
+                  <th><b>Career Domain</b></th>
+                  <th><b>Actions</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (allAppointments.length > 0) { %> <%
+                allAppointments.forEach(appointment => { %>
+                <tr id="appointment-<%= appointment.id %>">
+                  <td><%= appointment.id %></td>
+                  <td><%= appointment.full_name %></td>
+                  <td><%= appointment.phone_number%></td>
+                  <td>
+                    <%= appointment.preferred_date %> <%=
+                    appointment.preferred_time %>
+                  </td>
+                  <td>
+                    <span class="status>">
+                      <%= appointment.career_domain %>
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn-delete-appointment"
+                      data-id="<%= appointment.id %>"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% }); %> <% } else { %>
+                <tr>
+                  <td colspan="6" style="text-align: center">
+                    No appointments available.
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <p>Email: careerelevate2025@gmail.com</p>
+          <p>Phone: 8668586135</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Career Elevate. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/JS/admin.js"></script>
+  </body>
+</html>

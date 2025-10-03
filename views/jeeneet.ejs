@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Elevate - JEE & NEET Guidance</title>
+
+    <style>
+        /* Base styles */
+:root {
+    --color-primary: #1E3A8A;          /* Royal Blue */
+    --color-primary-hover: #152A60;    /* Darker Royal Blue */
+    --color-secondary: #069A6E;        /* Emerald Green */
+    --color-secondary-hover: #057A56;  /* Darker Emerald Green */
+    --color-bg-dark: #1E3A8A;          /* Royal Blue background */
+    --color-bg-light: #FFFFFF;         /* White background */
+    --color-text: #1A202C;             /* Dark text */
+    --color-text-light: #FFFFFF;       /* White text */
+    --color-text-muted: #4A5568;       /* Muted text */
+    --color-accent: #E6F0FF;           /* Light blue accent */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg-light);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 1rem;
+    text-align: center;
+    background-color: var(--color-bg-dark);
+}
+
+.hero-content {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 4rem;
+    }
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+/* Career Paths Section */
+.career-paths {
+    padding: 5rem 1rem;
+    background-color: var(--color-bg-light);
+}
+
+.career-paths h2,
+.benefits h2,
+.testimonials h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+}
+
+.path-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .path-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.path-card {
+    background-color: var(--color-accent);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.path-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.path-card .icon {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.path-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.path-card p {
+    color: var(--color-text-muted);
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 5rem 1rem;
+    background-color: var(--color-secondary);
+}
+
+.benefits h2 {
+    color: var(--color-text-light);
+}
+
+.benefit-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .benefit-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.benefit-card {
+    text-align: center;
+}
+
+.benefit-card h3 {
+    color: var(--color-text-light);
+    margin-top: 1rem;
+}
+
+.benefit-icon {
+    background-color: var(--color-text-light);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--color-secondary);
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 1rem;
+    background-color: var(--color-bg-light);
+}
+
+.testimonial-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .testimonial-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.testimonial-card {
+    background-color: var(--color-accent);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.testimonial-header img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    margin-right: 1rem;
+    border: 2px solid var(--color-primary);
+}
+
+.testimonial-header h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-primary);
+}
+
+.testimonial-header p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.quote {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* CTA Section */
+.cta {
+    padding: 5rem 1rem;
+    text-align: center;
+    background-color: var(--color-primary);
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.cta p {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 1rem;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-content svg {
+    color: var(--color-text-light);
+}
+
+.footer-content span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Excel in Your JEE/NEET Journey</h1>
+                <p>Get personalized guidance from top JEE/NEET achievers and experienced educators to maximize your potential and secure admission to your dream college.</p>
+
+                <a href="/book-session/jee-neet-guidance">
+
+
+                    <button class="cta-button">
+                        Book a Session
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </a>
+            </div>
+        </header>
+
+        <!-- Subjects Section -->
+        <section class="career-paths">
+            <h2>Expert Mentoring in Key Subjects</h2>
+            <div class="path-cards">
+                <div class="path-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>Mathematics</h3>
+                    <p>Master complex concepts and problem-solving techniques for JEE/NEET success</p>
+                </div>
+                <div class="path-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15h15"/><path d="M4.5 9h15"/><path d="M4.5 21 12 3l7.5 18"/></svg>
+                    </div>
+                    <h3>Physics & Chemistry</h3>
+                    <p>Build strong foundations with practical insights and application-based learning</p>
+                </div>
+                <div class="path-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
+                    </div>
+                    <h3>Biology</h3>
+                    <p>Comprehensive coverage of NEET syllabus with expert guidance for medical aspirants</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <h2>Why Choose Our Mentoring?</h2>
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>IIT/AIIMS Mentors</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>Personalized Plans</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m2 12 20 0"/><path d="m12 2 4 4-4-4Z"/><path d="m12 22-4-4 4 4Z"/><path d="m2 12 4-4-4 4Z"/><path d="m22 12-4 4 4-4Z"/></svg>
+                    </div>
+                    <h3>Mock Test Series</h3>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>Doubt Resolution</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Success Stories</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&fit=crop" alt="Rajesh Kumar">
+                        <div>
+                            <h3>Rajesh Kumar</h3>
+                            <p>AIR 156 in JEE Advanced</p>
+                        </div>
+                    </div>
+                    <p class="quote">"The mentoring program helped me crack JEE Advanced and secure admission to IIT Bombay."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&fit=crop" alt="Priya Sharma">
+                        <div>
+                            <h3>Priya Sharma</h3>
+                            <p>AIR 342 in NEET</p>
+                        </div>
+                    </div>
+                    <p class="quote">"My mentor's guidance was crucial in helping me excel in Biology and Chemistry for NEET."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop" alt="Arjun Mehta">
+                        <div>
+                            <h3>Arjun Mehta</h3>
+                            <p>AIR 89 in JEE Mains</p>
+                        </div>
+                    </div>
+                    <p class="quote">"The structured study plans and practice tests were key to my success in JEE Mains."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <h2>Ready to Excel in JEE/NEET?</h2>
+            <p>Book a free consultation with one of our expert mentors and take the first step towards securing your seat in top engineering and medical colleges.</p>
+            <br>
+            <a href="/book-session/jee-neet-guidance">
+
+                <button class="cta-button">
+                    Book Your Free Session
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span>JEE NEET Guidance</span>
+            </div>
+        </footer>
+    </div>
+    <script src="/JS/learnmorepage.js"></script>
+</body>
+</html>

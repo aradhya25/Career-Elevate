@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Career Opportunity</title>
+    <link rel="stylesheet" href="/CSS/joboppurtunity.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-card">
+        <div class="form-header">
+          <h2>Post Career Opportunity</h2>
+          <p>Fill in the details below to create a new opportunity</p>
+        </div>
+
+        <form id="careerForm" action="/admin/post-opportunity" method="post">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="Career Opportunity">Career Opportunity</option>
+              <option value="Job Opportunity">Job Opportunity</option>
+              <option value="Internship Opportunity">
+                Internship Opportunity
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" />
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" />
+          </div>
+
+          <div class="form-group">
+            <label for="apply_link">Apply Link</label>
+            <input
+              type="url"
+              id="apply_link"
+              name="apply_link"
+              placeholder="https://"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" onclick="return confirm('Are you sure you want to post this opportunity?');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z" />
+              <path d="M22 2 11 13" />
+            </svg>
+            Post Opportunity
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- <script src="/JS/joboppurtunity.js"></script> -->
+  </body>
+</html>
